@@ -6504,6 +6504,10 @@ public final class Settings {
          */
         public static final String SWIPE_TO_SCREENSHOT = "swipe_to_screenshot";
 
+        /**
+         * QS Show data usage
+         * @hide
+         */
         public static final String QS_SHOW_DATA_USAGE = "qs_show_data_usage";
 
         /**
