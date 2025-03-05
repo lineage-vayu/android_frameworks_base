@@ -6481,6 +6481,12 @@ public final class Settings {
         public static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
 
         /**
+         * Whether to show ongoing progressbar in the notification shade
+         * @hide
+         */
+        public static final String CONFIG_ONGOING_PROGRESSBAR = "config_enableOngoingProgressBarChip";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
