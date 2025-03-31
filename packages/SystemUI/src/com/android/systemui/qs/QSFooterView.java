@@ -126,39 +126,39 @@ public class QSFooterView extends FrameLayout {
     private void setUsageText() {
         if (mUsageText == null || !mShouldShowDataUsage) return;
         DataUsageController.DataUsageInfo info = null;
-        String suffix = null;
+        String type;
+        
         if (mIsWifiConnected || mHasNoSims) {
             info = mDataController.getWifiDailyDataUsageInfo(true);
             if (info == null) {
                 info = mDataController.getWifiDailyDataUsageInfo(false);
-                suffix = mContext.getResources().getString(R.string.usage_wifi_default_suffix);
-            } else {
-                suffix = getWifiSsid();
             }
+            type = "wifi";
         } else {
             mDataController.setSubscriptionId(mSubId);
             info = mDataController.getDailyDataUsageInfo();
-            suffix = getSlotCarrierName();
+            type = "data";
         }
+        
         if (info == null) {
             Log.w(TAG, "setUsageText: DataUsageInfo is NULL.");
             return;
         }
+        
         // Setting text actually triggers a layout pass (because the text view is set to
         // wrap_content width and TextView always relayouts for this). Avoid needless
         // relayout if the text didn't actually change.
-        String text = formatDataUsage(info.usageLevel, suffix);
+        String text = formatDataUsage(info.usageLevel, type);
         if (!TextUtils.equals(text, mUsageText.getText())) {
             mUsageText.setText(text);
         }
     }
 
-    private String formatDataUsage(long byteValue, String suffix) {
-        // Example: 1.23 GB used today (airtel)
+    private String formatDataUsage(long byteValue, String type) {
         return new StringBuilder(Formatter.formatFileSize(getContext(), byteValue, Formatter.FLAG_IEC_UNITS))
-                .append(" ")
-                .append(mContext.getString(R.string.usage_data))
-                .append(" (" + suffix + ")")
+                .append(" (")
+                .append(type)
+                .append(")")
                 .toString();
     }
 
