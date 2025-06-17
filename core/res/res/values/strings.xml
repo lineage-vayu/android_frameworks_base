@@ -6722,9 +6722,6 @@ ul.</string>
     <!-- User visible title for the keyboard shortcut group containing system-wide application launch shortcuts. [CHAR-LIMIT=70] -->
     <string name="keyboard_shortcut_group_applications">Applications</string>
 
-    <!-- Lock gesture -->
-    <string name="gesture_locked_warning">Swipe again to unlock gestures</string>
-
     <!-- Fingerprint loe notification string -->
     <string name="fingerprint_loe_notification_msg">Your fingerprints can no longer be recognized. Set up Fingerprint Unlock again.</string>
 </resources>
